@@ -12,13 +12,16 @@ import { SkillsService } from '../services/skills.service';
 export class SkillsComponent implements OnInit {
   skills: Skill[];
 
+  dataService: SkillService;
+
   // skills = ['Math', 'CS', 'Ruby on Rails', 'Angular'];
 
   constructor(private skillsService: SkillsService) {
-    this.skills = skillsService.skills;
+       this.dataService = this.skillsService;
   }
-
+  
   ngOnInit() {
+    this.dataService.getSkills().subscribe(skills=> this.skills=skills)
   }
 
 }
